@@ -1,0 +1,83 @@
+<main id="main" class="main">
+
+  <section class="section">
+
+    <div class="row">
+
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="pagetitle">
+              <nav>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a routerLink="/dashboard">Home</a></li>
+                  <li class="breadcrumb-item">Affectation Enseignant</li>
+                  <li class="breadcrumb-item active">{{title}}</li>
+                </ol>
+              </nav>
+            </div>
+            <h1 style="margin-bottom: 40px;">{{title}}</h1>
+            <form [formGroup]="form" (ngSubmit)="onSub()">
+              <div class="row">
+                <mat-label class="col-md-2 label_form" style="margin-top: 20px;font-size: large;">Nom et Prénom :</mat-label>
+                <mat-form-field appearance="outline" class="col-md-5">
+                  <input matInput formControlName="username" placeholder="Nom et Prénom" required>
+                </mat-form-field>
+              </div>
+              <div class="row">
+                <mat-label class="col-md-2 label_form" style="margin-top: 20px;font-size: large;">Email:</mat-label>
+                <mat-form-field appearance="outline" class="col-md-5">
+                  <input matInput formControlName="email" type="email" placeholder="Email" required>
+                </mat-form-field>
+              </div>
+<!--              <div class="row">-->
+<!--                <mat-label class="col-md-2 label_form" style="margin-top: 20px;font-size: large;">CIN:</mat-label>-->
+<!--                <mat-form-field appearance="outline" class="col-md-5">-->
+<!--                  <input matInput formControlName="cin"  placeholder="CIN" required>-->
+<!--                </mat-form-field>-->
+<!--              </div>-->
+              <div class="row">
+                <mat-label class="col-md-2 label_form" style="margin-top: 20px;font-size: large;">Mot de passe:</mat-label>
+                <mat-form-field appearance="outline" class="col-md-5">
+                  <input matInput formControlName="password" type="password" placeholder="Mot de passe" required>
+                </mat-form-field>
+              </div>
+              <div class="row" *ngIf="buttonadd == 'Enregistrer '">
+                <mat-label class="col-md-2 label_form" style="margin-top: 20px;font-size: large;">Rôle:</mat-label>
+                <mat-form-field appearance="fill" class="col-md-5">
+                  <mat-label class="col-md-2 label_form">-- Voulez choissir --</mat-label>
+                  <mat-select formControlName="role" class="col-md-3" >
+                    <mat-option *ngFor="let role of roles | async" [value]="role.name">
+                      {{role.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="row" *ngIf="buttonadd == 'Modifier '">
+                <mat-label class="col-md-2 label_form" style="margin-top: 20px;font-size: large;">Rôle:</mat-label>
+                <mat-form-field appearance="fill" class="col-md-5">
+                  <mat-label class="col-md-2 label_form">-- Voulez choissir --</mat-label>
+                  <mat-select formControlName="role" class="col-md-3" >
+                    <mat-option disabled="" readonly=""  *ngFor="let role of roles | async" [value]="role.name">
+                      {{role.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+<!--              <div class="row" style="margin: 9px 0px 37px -12px;">-->
+<!--                <mat-label class="col-md-2 label_form" style="font-size: large;">Status</mat-label>-->
+<!--                <mat-slide-toggle formControlName="status"class="col-md-5" required></mat-slide-toggle>-->
+<!--              </div>-->
+              <div class="row">
+                <div class="col-md-7 align_button" >
+                  <button mat-raised-button color="primary"  class="btn" >{{buttonadd}}</button>
+                  <button mat-raised-button color="warn"  class="btn" (click)="Retour()"  >Annuler</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

@@ -1,0 +1,25 @@
+<aside id="sidebar" class="sidebar">
+    <ul class="sidebar-nav" id="sidebar-nav">
+      <div *ngIf="role == 'admin' || role == 'ROLE_ADMIN' ">
+       <li class="nav-item"> <a class="nav-link " routerLink="/dashboard"> <i class="bi bi-grid"></i> <span>Dashboard</span> </a></li>
+      </div>
+      <div *ngIf="role == 'admin'  ">
+        <li class="nav-item"> <a class="nav-link collapsed" routerLink="/list_user"> <i class="bi bi-person-workspace"></i> <span>Utilisateurs</span> </a></li>
+     </div>
+      <div *ngIf="role == 'admin'">
+      <li class="nav-item"> <a class="nav-link collapsed" routerLink="/matiere/list"> <i class="bi bi-layout-text-window-reverse"></i> <span>Matiéres</span> </a></li>
+      </div>
+      <div *ngIf="role == 'admin' ">
+       <li class="nav-item"> <a class="nav-link collapsed" routerLink="/groupe/list"> <i class="bi bi-people-fill"></i> <span>Groupes</span> </a></li>
+      </div>
+      <div *ngIf="role == 'admin' ">
+        <li class="nav-item"> <a class="nav-link collapsed" routerLink="/categorie"> <i class="bi bi-layout-text-window-reverse"></i> <span>Categorie</span> </a></li>
+      </div>
+      <div *ngIf="role == 'admin'">
+        <li class="nav-item"> <a class="nav-link collapsed" routerLink="/affectation/list"> <i class="bi bi-person-check-fill"></i> <span>Affectation Enseignant</span> </a></li>
+      </div>
+      <div *ngIf="role == 'admin' || role == 'ROLE_ADMIN'|| role == 'ROLE_ENSEIGNANT'|| role == 'ROLE_TIRAGE' ">
+        <li class="nav-item"> <a class="nav-link collapsed" routerLink="/cours/list"> <i class="bi bi-journal-arrow-down"></i> <span>Cours</span> </a></li>
+      </div>
+       </ul>
+ </aside>

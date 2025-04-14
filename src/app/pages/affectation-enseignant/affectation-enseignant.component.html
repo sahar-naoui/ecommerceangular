@@ -1,0 +1,71 @@
+<main id="main" class="main">
+
+  <section class="section">
+
+    <div class="row">
+
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="pagetitle">
+              <nav>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a routerLink="/dashboard">Home</a></li>
+                  <li class="breadcrumb-item">Affectation Enseignant</li>
+                  <li class="breadcrumb-item active">{{title}}</li>
+                </ol>
+              </nav>
+            </div>
+
+            <h1 style="margin-bottom: 40px;">{{title}}</h1>
+
+            <form [formGroup]="form" (ngSubmit)="onSub()">
+              <div class="row">
+                <mat-label class="col-md-2 label_form">Enseignant : </mat-label>
+
+                <mat-form-field appearance="fill" style="width: 455px;">
+                  <mat-label class="col-md-2 label_form">-- Voulez choissir --</mat-label>
+                  <mat-select formControlName="enseignant_id" class="col-md-3" >
+                    <mat-option *ngFor="let enseignant of enseignants | async" [value]="enseignant.id">
+                      {{enseignant.username}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="row">
+                <mat-label class="col-md-2 label_form">Groupe : </mat-label>
+
+                <mat-form-field appearance="fill" style="width: 455px;">
+                  <mat-label class="col-md-2 label_form">-- Voulez choissir --</mat-label>
+                  <mat-select formControlName="group_id" class="col-md-3" >
+                    <mat-option *ngFor="let group of groups | async" [value]="group.id">
+                      {{group.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="row">
+                <mat-label class="col-md-2 label_form">Matière : </mat-label>
+                <mat-form-field appearance="fill" style="width: 455px;">
+                  <mat-label class="col-md-2 label_form">-- Voulez choissir --</mat-label>
+                  <mat-select formControlName="matiere_id" class="col-md-3" >
+                    <mat-option *ngFor="let matiere of matieres | async" [value]="matiere.id">
+                      {{matiere.label}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+                  <div class="row">
+                <div class="col-md-7 align_button" >
+                  <button mat-raised-button color="primary"  class="btn" >{{buttonadd}}</button>
+                  <button mat-raised-button color="warn"  class="btn" (click)="Retour()"  >Annuler</button>
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
