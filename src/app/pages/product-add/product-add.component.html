@@ -1,0 +1,104 @@
+<main id="main" class="main">
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="pagetitle">
+                <nav>
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a routerLink="/dashboard">Home</a></li>
+                    <li class="breadcrumb-item">Produit</li>
+                    <li class="breadcrumb-item active">{{ title }}</li>
+                  </ol>
+                </nav>
+              </div>
+              <h1 style="margin-bottom: 40px;">{{ title }}</h1>
+  
+              <form [formGroup]="form" (ngSubmit)="onSub()">
+                <div class="row">
+                  <mat-label class="col-md-2 label_form">Nom du produit :</mat-label>
+                  <mat-form-field appearance="fill" class="col-md-5">
+                    <input matInput formControlName="ProductName" placeholder="Nom du produit" required />
+                  </mat-form-field>
+                </div>
+  
+                <div class="row">
+                  <mat-label class="col-md-2 label_form">Fournisseur :</mat-label>
+                  <mat-form-field appearance="fill" class="col-md-5">
+                    <mat-label>-- Veuillez choisir un fournisseur --</mat-label>
+                    <mat-select formControlName="SupplierID">
+                      <mat-option *ngFor="let supplier of suppliers" [value]="supplier.SupplierID">
+                        {{ supplier.SupplierID }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+  
+                <div class="row">
+                  <mat-label class="col-md-2 label_form">Catégorie :</mat-label>
+                  <mat-form-field appearance="fill" class="col-md-5">
+                    <mat-label>-- Veuillez choisir une catégorie --</mat-label>
+                    <mat-select formControlName="CategoryID">
+                      <mat-option *ngFor="let category of categories" [value]="category.CategoryID">
+                        {{ category.CategoryID }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+  
+                <div class="row">
+                  <mat-label class="col-md-2 label_form">Quantité par unité :</mat-label>
+                  <mat-form-field appearance="fill" class="col-md-5">
+                    <input matInput formControlName="QuantityPerUnit" placeholder="ex: 10 boîtes de 20" required />
+                  </mat-form-field>
+                </div>
+  
+                <div class="row">
+                  <mat-label class="col-md-2 label_form">Prix unitaire :</mat-label>
+                  <mat-form-field appearance="fill" class="col-md-5">
+                    <input matInput type="number" formControlName="UnitPrice" placeholder="Prix unitaire" required />
+                  </mat-form-field>
+                </div>
+  
+                <div class="row">
+                  <mat-label class="col-md-2 label_form">Unités en stock :</mat-label>
+                  <mat-form-field appearance="fill" class="col-md-5">
+                    <input matInput type="number" formControlName="UnitsInStock" placeholder="Unités en stock" required />
+                  </mat-form-field>
+                </div>
+  
+                <div class="row">
+                  <mat-label class="col-md-2 label_form">Unités commandées :</mat-label>
+                  <mat-form-field appearance="fill" class="col-md-5">
+                    <input matInput type="number" formControlName="UnitsOnOrder" placeholder="Unités Commandées" required />
+                  </mat-form-field>
+                </div>
+  
+                <div class="row">
+                  <mat-label class="col-md-2 label_form">Seuil de réapprovisionnement :</mat-label>
+                  <mat-form-field appearance="fill" class="col-md-5">
+                    <input matInput type="number" formControlName="ReorderLevel" placeholder="Seuil de réapprovisionnement" required />
+                  </mat-form-field>
+                </div>
+  
+                <div class="row">
+                  <mat-label class="col-md-2 label_form">Désactivé :</mat-label>
+                  <mat-checkbox formControlName="Discontinued" class="col-md-5">Produit désactivé</mat-checkbox>
+                </div>
+  
+                <div class="row">
+                  <div class="col-md-7 align_button">
+                    <button mat-raised-button color="primary" class="btn">{{ buttonadd }}</button>
+                    <button mat-raised-button color="warn" class="btn" (click)="Retour()">Annuler</button>
+                  </div>
+                </div>
+              </form>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  

@@ -4,7 +4,6 @@ import {Categorie} from "../../models/Categorie";
 import {Subscription} from "rxjs";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
-import {GroupService} from "../../_services/group.service";
 import {Router} from "@angular/router";
 import {CategorieService} from "../../_services/categorie.service";
 import Swal from "sweetalert2";
@@ -76,7 +75,7 @@ export class CategorieComponent implements OnInit {
             {
               Swal.fire(
                 '',
-                'Groupe déjà affectée !!',
+                'Catégorie déjà affectée !!',
                 'error'
               );
             }

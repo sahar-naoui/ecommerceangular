@@ -14,7 +14,7 @@ import { PagesRegisterComponent } from './pages/pages-register/pages-register.co
 import { PagesError404Component } from './pages/pages-error404/pages-error404.component';
 import { PagesBlankComponent } from './pages/pages-blank/pages-blank.component';
 import { SecurityComponent } from './security/security.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
 import {httpInterceptorProviders} from "./_helpers/http.interceptor";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { LoginComponent } from './pages/login/login.component';
@@ -42,6 +42,29 @@ import { AjouterCoursComponent } from './pages/ajouter-cours/ajouter-cours.compo
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {CategorieComponent} from "./pages/categorie/categorie.component";
 import { CategorieAddComponent } from './pages/categorie-add/categorie-add.component';
+import { AuthInterceptor } from './auth.interceptor';
+import {RegionComponent} from "./pages/region/region.component";
+import { RegionAddComponent } from './pages/region-add/region-add.component';
+import { CustomerComponent } from './pages/customer/customer.component';
+import { CustomerAddComponent } from './pages/customer-add/customer-add.component';
+import { EmployeeComponent } from './pages/employee/employee.component';
+import { EmployeeAddComponent } from './pages/employee-add/employee-add.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import { TerritorieComponent } from './pages/territorie/territorie.component';
+import { TerritorieAddComponent } from './pages/territorie-add/territorie-add.component';
+import { EmpterritorieComponent } from './pages/empterritorie/empterritorie.component';
+import { EmpterritorieAddComponent } from './pages/empterritorie-add/empterritorie-add.component';
+import { OrderComponent } from './pages/order/order.component';
+import { OrderAddComponent } from './pages/order-add/order-add.component';
+import { SupplierComponent } from './pages/supplier/supplier.component';
+import { SupplierAddComponent } from './pages/supplier-add/supplier-add.component';
+import { ProductComponent } from './pages/product/product.component';
+import { ProductAddComponent } from './pages/product-add/product-add.component';
+import { OrderdetailComponent } from './pages/orderdetail/orderdetail.component';
+import { OrderdetailAddComponent } from './pages/orderdetail-add/orderdetail-add.component';
+import { ShipperComponent } from './pages/shipper/shipper.component';
+import { ShipperAddComponent } from './pages/shipper-add/shipper-add.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,7 +91,27 @@ import { CategorieAddComponent } from './pages/categorie-add/categorie-add.compo
     ListCoursComponent,
     AjouterCoursComponent,
     CategorieComponent,
-    CategorieAddComponent
+    CategorieAddComponent,
+    RegionComponent,
+    RegionAddComponent,
+    CustomerComponent,
+    CustomerAddComponent,
+    EmployeeComponent,
+    EmployeeAddComponent,
+    TerritorieComponent,
+    TerritorieAddComponent,
+    EmpterritorieComponent,
+    EmpterritorieAddComponent,
+    OrderComponent,
+    OrderAddComponent,
+    SupplierComponent,
+    SupplierAddComponent,
+    ProductComponent,
+    ProductAddComponent,
+    OrderdetailComponent,
+    OrderdetailAddComponent,
+    ShipperComponent,
+    ShipperAddComponent
   ],
     imports: [
         BrowserModule,
@@ -88,10 +131,11 @@ import { CategorieAddComponent } from './pages/categorie-add/categorie-add.compo
         MatCheckboxModule,
         MatSlideToggleModule,
         MatDatepickerModule,
+        MatNativeDateModule,
 
 
     ],
-  providers: [httpInterceptorProviders],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

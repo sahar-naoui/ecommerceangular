@@ -11,7 +11,7 @@
               <nav>
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a routerLink="/dashboard">Home</a></li>
-                  <li class="breadcrumb-item">Categorie</li>
+                  <li class="breadcrumb-item">Catégorie</li>
                   <li class="breadcrumb-item active">{{title}}</li>
                 </ol>
               </nav>
@@ -21,15 +21,15 @@
 
             <form [formGroup]="form" (ngSubmit)="onSub()">
               <div class="row">
-                <mat-label class="col-md-2 label_form" style="margin-top: 20px;font-size: revert;">Category Name:</mat-label>
+                <mat-label class="col-md-2 label_form" style="margin-top: 20px;font-size: revert;">Nom de la Catégorie:</mat-label>
                 <mat-form-field appearance="outline" class="col-md-5">
-                  <input matInput formControlName="CategoryName" placeholder="Category Name" required>
+                  <input matInput formControlName="CategoryName" placeholder="Nom de la Catégorie" required>
                 </mat-form-field>
               </div>
               <div class="row">
-                <mat-label class="col-md-2 label_form" style="margin-top: 20px;font-size: revert;">Description :</mat-label>
+                <mat-label class="col-md-2 label_form" style="margin-top: 20px;font-size: revert;">Description de la Catégorie:</mat-label>
                 <mat-form-field appearance="outline" class="col-md-5">
-                  <input matInput formControlName="Description" placeholder="Description" required>
+                  <input matInput formControlName="Description" placeholder="Description de la Catégorie" required>
                 </mat-form-field>
               </div>
               <div class="row">

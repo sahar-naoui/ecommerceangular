@@ -11,7 +11,7 @@
               <nav>
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a routerLink="/dashboard">Home</a></li>
-                  <li class="breadcrumb-item">Categorie</li>
+                  <li class="breadcrumb-item">Catégories</li>
                   <li class="breadcrumb-item active">Liste des catégories</li>
                 </ol>
               </nav>
@@ -21,11 +21,11 @@
             <div class="mat-elevation-z8">
               <table mat-table [dataSource]="dataSource" matSort>
                 <ng-container matColumnDef="CategoryName">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Nom Categorie </th>
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Nom Catégorie </th>
                   <td mat-cell *matCellDef="let row"> {{row.CategoryName}} </td>
                 </ng-container>
                 <ng-container matColumnDef="Description">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Description Categorie </th>
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Description Catégorie </th>
                   <td mat-cell *matCellDef="let row"> {{row.Description}} </td>
                 </ng-container>
                 <ng-container matColumnDef="Action">

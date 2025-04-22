@@ -3,7 +3,6 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {CategorieService} from "../../_services/categorie.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Categorie} from "../../models/Categorie";
-import {Group} from "../../models/Group";
 import Swal from "sweetalert2";
 
 @Component({
@@ -34,7 +33,7 @@ export class CategorieAddComponent implements OnInit {
         }, error => console.log(error));
     }else{
       this.buttonadd = 'Enregistrer ';
-      this.title = 'Ajouter Categorie';
+      this.title = 'Ajouter Catégorie';
       this.initForm();
     }
   }

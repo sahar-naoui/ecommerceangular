@@ -1,0 +1,58 @@
+<main id="main" class="main">
+
+    <section class="section">
+  
+      <div class="row">
+  
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="pagetitle">
+                <nav>
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a routerLink="/dashboard">Home</a></li>
+                    <li class="breadcrumb-item">Employé territorie</li>
+                    <li class="breadcrumb-item active">{{title}}</li>
+                  </ol>
+                </nav>
+              </div>
+              <h1 style="margin-bottom: 40px;">{{title}}</h1>
+              <form [formGroup]="form" (ngSubmit)="onSub()">
+                  <div class="row">
+                    <mat-label class="col-md-2 label_form">ID Territorie :</mat-label>
+                    <mat-form-field appearance="fill" style="width: 455px;">
+                      <mat-label>-- Veuillez choisir un ID Territorie --</mat-label>
+                      <mat-select formControlName="TerritoryID">
+                        <mat-option *ngFor="let territorie of territories" [value]="territorie.TerritoryID">
+                          {{ territorie.TerritoryID }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  
+                  <div class="row">
+                    <mat-label class="col-md-2 label_form">ID Employee :</mat-label>
+                    <mat-form-field appearance="fill" style="width: 455px;">
+                      <mat-label>-- Veuillez choisir un ID Employee --</mat-label>
+                      <mat-select formControlName="EmployeeID">
+                        <mat-option *ngFor="let emplyee of emplyees" [value]="emplyee.EmployeeID">
+                          {{ emplyee.EmployeeID }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  
+                <div class="row">
+                  <div class="col-md-7 align_button" >
+                    <button mat-raised-button color="primary"  class="btn" >{{buttonadd}}</button>
+                    <button mat-raised-button color="warn"  class="btn" (click)="Retour()"  >Annuler</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  

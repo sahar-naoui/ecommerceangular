@@ -1,0 +1,128 @@
+<main id="main" class="main">
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="pagetitle">
+                <nav>
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a routerLink="/dashboard">Home</a></li>
+                    <li class="breadcrumb-item">Employées</li>
+                    <li class="breadcrumb-item active">Liste des Employées</li>
+                  </ol>
+                </nav>
+              </div>
+              <h1>Liste des Employées</h1>
+              <a type="button" class="btn btn-primary button-add" routerLink="/employee/add"> Ajouter</a>
+              <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSource" matSort>
+                    <ng-container matColumnDef="FirstName">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Prénom </th>
+                        <td mat-cell *matCellDef="let row"> {{row.FirstName}} </td>
+                      </ng-container>
+                      
+                      <ng-container matColumnDef="LastName">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nom </th>
+                        <td mat-cell *matCellDef="let row"> {{row.LastName}} </td>
+                      </ng-container>
+                      
+                      <ng-container matColumnDef="Title">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Titre </th>
+                        <td mat-cell *matCellDef="let row"> {{row.Title}} </td>
+                      </ng-container>
+                      
+                      <ng-container matColumnDef="TitleOfCourtesy">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Civilité </th>
+                        <td mat-cell *matCellDef="let row"> {{row.TitleOfCourtesy}} </td>
+                      </ng-container>
+                      
+                      <ng-container matColumnDef="BirthDate">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Date de naissance </th>
+                        <td mat-cell *matCellDef="let row"> {{row.BirthDate | date}} </td>
+                      </ng-container>
+                      
+                      <ng-container matColumnDef="HireDate">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Date d'embauche </th>
+                        <td mat-cell *matCellDef="let row"> {{row.HireDate | date}} </td>
+                      </ng-container>
+                      
+                      <ng-container matColumnDef="Address">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Adresse </th>
+                        <td mat-cell *matCellDef="let row"> {{row.Address}} </td>
+                      </ng-container>
+                      
+                      <ng-container matColumnDef="City">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Ville </th>
+                        <td mat-cell *matCellDef="let row"> {{row.City}} </td>
+                      </ng-container>
+                      
+                      <ng-container matColumnDef="Region">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Région </th>
+                        <td mat-cell *matCellDef="let row"> {{row.Region}} </td>
+                      </ng-container>
+                      
+                      <ng-container matColumnDef="PostalCode">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Code postal </th>
+                        <td mat-cell *matCellDef="let row"> {{row.PostalCode}} </td>
+                      </ng-container>
+                      
+                      <ng-container matColumnDef="Country">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Pays </th>
+                        <td mat-cell *matCellDef="let row"> {{row.Country}} </td>
+                      </ng-container>
+                      
+                      <ng-container matColumnDef="HomePhone">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Téléphone fixe </th>
+                        <td mat-cell *matCellDef="let row"> {{row.HomePhone}} </td>
+                      </ng-container>
+                      
+                      <ng-container matColumnDef="Extension">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Poste </th>
+                        <td mat-cell *matCellDef="let row"> {{row.Extension}} </td>
+                      </ng-container>
+                      
+                      <ng-container matColumnDef="Notes">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Remarques </th>
+                        <td mat-cell *matCellDef="let row"> {{row.Notes}} </td>
+                      </ng-container>
+                      
+                      <ng-container matColumnDef="ReportsTo">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Responsable </th>
+                        <td mat-cell *matCellDef="let row"> {{row.ReportsTo}} </td>
+                      </ng-container>
+                      
+                      <ng-container matColumnDef="Salary">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Salaire </th>
+                        <td mat-cell *matCellDef="let row"> {{row.Salary}} €</td>
+                      </ng-container>
+                      
+                      
+
+                  <ng-container matColumnDef="Action">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+                    <td td mat-cell *matCellDef="let row" >
+                      <button  class="btn btn-warning btnDataTable" (click)="updateEmployee(row.EmployeeID)"  >
+                        <mat-icon>edit</mat-icon>
+                      </button>
+                      <button  class="btn btn-danger btnDataTable"  (click)="deleteEmployee(row.EmployeeID)">
+                        <mat-icon>delete</mat-icon>
+                      </button>
+  
+                    </td>
+                  </ng-container>
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+                  </tr>
+                </table>
+  
+                <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  

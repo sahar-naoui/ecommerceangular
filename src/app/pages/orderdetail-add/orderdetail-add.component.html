@@ -1,0 +1,79 @@
+<main id="main" class="main">
+
+    <section class="section">
+  
+      <div class="row">
+  
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="pagetitle">
+                <nav>
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a routerLink="/dashboard">Home</a></li>
+                    <li class="breadcrumb-item">Détail Ordre</li>
+                    <li class="breadcrumb-item active">{{title}}</li>
+                  </ol>
+                </nav>
+              </div>
+              <h1 style="margin-bottom: 40px;">{{title}}</h1>
+              <form [formGroup]="form" (ngSubmit)="onSub()">
+                  <div class="row">
+                    <mat-label class="col-md-2 label_form">ID Order :</mat-label>
+                    <mat-form-field appearance="fill" style="width: 455px;">
+                      <mat-label>-- Veuillez choisir un ID Order --</mat-label>
+                      <mat-select formControlName="OrderID">
+                        <mat-option *ngFor="let order of orders" [value]="order.OrderID">
+                          {{ order.OrderID }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  
+                  <div class="row">
+                    <mat-label class="col-md-2 label_form">ID Poduit :</mat-label>
+                    <mat-form-field appearance="fill" style="width: 455px;">
+                      <mat-label>-- Veuillez choisir un ID Poduit --</mat-label>
+                      <mat-select formControlName="ProductID">
+                        <mat-option *ngFor="let product of products" [value]="product.ProductID">
+                          {{ product.ProductID }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="row">
+                    <mat-label class="col-md-2 label_form" style="margin-top: 20px; font-size: large;"> Prix unitaire :</mat-label>
+                    <mat-form-field appearance="outline" class="col-md-5">
+                      <input matInput formControlName="UnitPrice" placeholder="Prix unitaire" required>
+                    </mat-form-field>
+                  </div>
+                  
+                  <div class="row">
+                    <mat-label class="col-md-2 label_form" style="margin-top: 20px; font-size: large;">Quantité :</mat-label>
+                    <mat-form-field appearance="outline" class="col-md-5">
+                      <input matInput type="number" formControlName="Quantity" placeholder="Quantité" required>
+                    </mat-form-field>
+                  </div>
+                  
+                  <div class="row">
+                    <mat-label class="col-md-2 label_form" style="margin-top: 20px; font-size: large;">Remise :</mat-label>
+                    <mat-form-field appearance="outline" class="col-md-5">
+                      <input matInput formControlName="Discount" placeholder="Remise" required>
+                    </mat-form-field>
+                  </div>
+                  
+                <div class="row">
+                  <div class="col-md-7 align_button" >
+                    <button mat-raised-button color="primary"  class="btn" >{{buttonadd}}</button>
+                    <button mat-raised-button color="warn"  class="btn" (click)="Retour()"  >Annuler</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  

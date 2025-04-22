@@ -1,0 +1,152 @@
+<main id="main" class="main">
+
+    <section class="section">
+  
+      <div class="row">
+  
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="pagetitle">
+                <nav>
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a routerLink="/dashboard">Home</a></li>
+                    <li class="breadcrumb-item">Ajouter Employées</li>
+                    <li class="breadcrumb-item active">{{title}}</li>
+                  </ol>
+                </nav>
+              </div>
+              <h1 style="margin-bottom: 40px;">{{title}}</h1>
+              <form [formGroup]="form" (ngSubmit)="onSub()">
+                <div class="row">
+                    <mat-label class="col-md-2 label_form" style="margin-top: 20px; font-size: large;">Prénom :</mat-label>
+                    <mat-form-field appearance="outline" class="col-md-5">
+                      <input matInput formControlName="FirstName" placeholder="Prénom" required>
+                    </mat-form-field>
+                  </div>
+                  
+                  <div class="row">
+                    <mat-label class="col-md-2 label_form" style="margin-top: 20px; font-size: large;">Nom :</mat-label>
+                    <mat-form-field appearance="outline" class="col-md-5">
+                      <input matInput formControlName="LastName" placeholder="Nom" required>
+                    </mat-form-field>
+                  </div>
+                  
+                  <div class="row">
+                    <mat-label class="col-md-2 label_form" style="margin-top: 20px; font-size: large;">Titre :</mat-label>
+                    <mat-form-field appearance="outline" class="col-md-5">
+                      <input matInput formControlName="Title" placeholder="Titre" required>
+                    </mat-form-field>
+                  </div>
+                  
+                  <div class="row">
+                    <mat-label class="col-md-2 label_form" style="margin-top: 20px; font-size: large;">Civilité :</mat-label>
+                    <mat-form-field appearance="outline" class="col-md-5">
+                      <input matInput formControlName="TitleOfCourtesy" placeholder="Civilité" required>
+                    </mat-form-field>
+                  </div>
+                  
+                  <div class="row">
+                    <mat-label class="col-md-2 label_form" style="margin-top: 20px; font-size: large;">Date de naissance :</mat-label>
+                    <mat-form-field appearance="outline" class="col-md-5">
+                      <input matInput [matDatepicker]="birthPicker" formControlName="BirthDate" placeholder="Date de naissance" required>
+                      <mat-datepicker-toggle matSuffix [for]="birthPicker"></mat-datepicker-toggle>
+                      <mat-datepicker #birthPicker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                  
+                  <div class="row">
+                    <mat-label class="col-md-2 label_form" style="margin-top: 20px; font-size: large;">Date d'embauche :</mat-label>
+                    <mat-form-field appearance="outline" class="col-md-5">
+                      <input matInput [matDatepicker]="hirePicker" formControlName="HireDate" placeholder="Date d'embauche" required>
+                      <mat-datepicker-toggle matSuffix [for]="hirePicker"></mat-datepicker-toggle>
+                      <mat-datepicker #hirePicker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                  
+                  <div class="row">
+                    <mat-label class="col-md-2 label_form" style="margin-top: 20px; font-size: large;">Adresse :</mat-label>
+                    <mat-form-field appearance="outline" class="col-md-5">
+                      <input matInput formControlName="Address" placeholder="Adresse" required>
+                    </mat-form-field>
+                  </div>
+                  
+                  <div class="row">
+                    <mat-label class="col-md-2 label_form" style="margin-top: 20px; font-size: large;">Ville :</mat-label>
+                    <mat-form-field appearance="outline" class="col-md-5">
+                      <input matInput formControlName="City" placeholder="Ville" required>
+                    </mat-form-field>
+                  </div>
+                  
+                  <div class="row">
+                    <mat-label class="col-md-2 label_form" style="margin-top: 20px; font-size: large;">Région :</mat-label>
+                    <mat-form-field appearance="outline" class="col-md-5">
+                      <input matInput formControlName="Region" placeholder="Région" required>
+                    </mat-form-field>
+                  </div>
+                  
+                  <div class="row">
+                    <mat-label class="col-md-2 label_form" style="margin-top: 20px; font-size: large;">Code Postal :</mat-label>
+                    <mat-form-field appearance="outline" class="col-md-5">
+                      <input matInput formControlName="PostalCode" placeholder="Code Postal" required>
+                    </mat-form-field>
+                  </div>
+                  
+                  <div class="row">
+                    <mat-label class="col-md-2 label_form" style="margin-top: 20px; font-size: large;">Pays :</mat-label>
+                    <mat-form-field appearance="outline" class="col-md-5">
+                      <input matInput formControlName="Country" placeholder="Pays" required>
+                    </mat-form-field>
+                  </div>
+                  
+                  <div class="row">
+                    <mat-label class="col-md-2 label_form" style="margin-top: 20px; font-size: large;">Téléphone :</mat-label>
+                    <mat-form-field appearance="outline" class="col-md-5">
+                      <input matInput formControlName="HomePhone" placeholder="Téléphone" required>
+                    </mat-form-field>
+                  </div>
+                  
+                  <div class="row">
+                    <mat-label class="col-md-2 label_form" style="margin-top: 20px; font-size: large;">Poste :</mat-label>
+                    <mat-form-field appearance="outline" class="col-md-5">
+                      <input matInput formControlName="Extension" placeholder="Poste" required>
+                    </mat-form-field>
+                  </div>
+                  
+                  <div class="row">
+                    <mat-label class="col-md-2 label_form" style="margin-top: 20px; font-size: large;">Notes :</mat-label>
+                    <mat-form-field appearance="outline" class="col-md-5">
+                      <textarea matInput formControlName="Notes" placeholder="Notes"></textarea>
+                    </mat-form-field>
+                  </div>
+                  
+                  <div class="row">
+                    <mat-label class="col-md-2 label_form" style="margin-top: 20px; font-size: large;">Supérieur hiérarchique (ID) :</mat-label>
+                    <mat-form-field appearance="outline" class="col-md-5">
+                      <input matInput formControlName="ReportsTo" placeholder="ID du supérieur" required>
+                    </mat-form-field>
+                  </div>
+                  
+                  <div class="row">
+                    <mat-label class="col-md-2 label_form" style="margin-top: 20px; font-size: large;">Salaire :</mat-label>
+                    <mat-form-field appearance="outline" class="col-md-5">
+                      <input type="number" matInput formControlName="Salary" placeholder="Salaire" required>
+                    </mat-form-field>
+                  </div>
+                  
+                  
+                  
+                <div class="row">
+                  <div class="col-md-7 align_button" >
+                    <button mat-raised-button color="primary"  class="btn" >{{buttonadd}}</button>
+                    <button mat-raised-button color="warn"  class="btn" (click)="Retour()"  >Annuler</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  

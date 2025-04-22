@@ -1,0 +1,133 @@
+<main id="main" class="main">
+
+    <section class="section">
+  
+      <div class="row">
+  
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="pagetitle">
+                <nav>
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a routerLink="/dashboard">Home</a></li>
+                    <li class="breadcrumb-item">Order</li>
+                    <li class="breadcrumb-item active">{{title}}</li>
+                  </ol>
+                </nav>
+              </div>
+              <h1 style="margin-bottom: 40px;">{{title}}</h1>
+              <form [formGroup]="form" (ngSubmit)="onSub()">
+                <div class="row">
+                    <mat-label class="col-md-2 label_form">Customer :</mat-label>
+                    <mat-form-field appearance="fill" style="width: 455px;">
+                      <mat-label>-- Veuillez choisir un customer --</mat-label>
+                      <mat-select formControlName="CustomerID">
+                        <mat-option *ngFor="let customer of customers" [value]="customer.CustomerID">
+                          {{ customer.CustomerID }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="row">
+                    <mat-label class="col-md-2 label_form">Employé :</mat-label>
+                    <mat-form-field appearance="fill" style="width: 455px;">
+                      <mat-label>-- Veuillez choisir un employé --</mat-label>
+                      <mat-select formControlName="EmployeeID">
+                        <mat-option *ngFor="let employee of employees" [value]="employee.EmployeeID">
+                          {{ employee.EmployeeID }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="row">
+                    <mat-label class="col-md-2 label_form" style="margin-top: 20px; font-size: large;">Date de l'order :</mat-label>
+                    <mat-form-field appearance="outline" class="col-md-5">
+                      <input matInput [matDatepicker]="orderPicker" formControlName="OrderDate" placeholder="Date de l'order" required>
+                      <mat-datepicker-toggle matSuffix [for]="orderPicker"></mat-datepicker-toggle>
+                      <mat-datepicker #orderPicker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                  
+                  <div class="row">
+                    <mat-label class="col-md-2 label_form" style="margin-top: 20px; font-size: large;">Date demandée :</mat-label>
+                    <mat-form-field appearance="outline" class="col-md-5">
+                      <input matInput [matDatepicker]="requiredPicker" formControlName="RequiredDate" placeholder="Date demandée" required>
+                      <mat-datepicker-toggle matSuffix [for]="requiredPicker"></mat-datepicker-toggle>
+                      <mat-datepicker #requiredPicker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                  
+                  <div class="row">
+                    <mat-label class="col-md-2 label_form" style="margin-top: 20px; font-size: large;">Date d'expédition :</mat-label>
+                    <mat-form-field appearance="outline" class="col-md-5">
+                      <input matInput [matDatepicker]="shippedPicker" formControlName="ShippedDate" placeholder="Date d'expédition" required>
+                      <mat-datepicker-toggle matSuffix [for]="shippedPicker"></mat-datepicker-toggle>
+                      <mat-datepicker #shippedPicker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                  
+                  
+                  <div class="row">
+                    <mat-label class="col-md-2 label_form" style="margin-top: 20px; font-size: large;">Méthode de livraison :</mat-label>
+                    <mat-form-field appearance="outline" class="col-md-5">
+                      <input matInput formControlName="ShipVia" placeholder="Méthode de livraison" required>
+                    </mat-form-field>
+                  </div>
+                  <div class="row">
+                    <mat-label class="col-md-2 label_form" style="margin-top: 20px; font-size: large;">Frais de livraison :</mat-label>
+                    <mat-form-field appearance="outline" class="col-md-5">
+                      <input matInput formControlName="Freight" placeholder="Frais de livraison" required>
+                    </mat-form-field>
+                  </div>
+                  <div class="row">
+                    <mat-label class="col-md-2 label_form" style="margin-top: 20px; font-size: large;">Nom du destinataire :</mat-label>
+                    <mat-form-field appearance="outline" class="col-md-5">
+                      <input matInput formControlName="ShipName" placeholder="Nom du destinataire" required>
+                    </mat-form-field>
+                  </div>
+                  <div class="row">
+                    <mat-label class="col-md-2 label_form" style="margin-top: 20px; font-size: large;">Adresse de livraison :</mat-label>
+                    <mat-form-field appearance="outline" class="col-md-5">
+                      <input matInput formControlName="ShipAddress" placeholder="Adresse de livraison" required>
+                    </mat-form-field>
+                  </div>
+                  <div class="row">
+                    <mat-label class="col-md-2 label_form" style="margin-top: 20px; font-size: large;">Ville de livraison :</mat-label>
+                    <mat-form-field appearance="outline" class="col-md-5">
+                      <input matInput formControlName="ShipCity" placeholder="Ville de livraison" required>
+                    </mat-form-field>
+                  </div>
+                  <div class="row">
+                    <mat-label class="col-md-2 label_form" style="margin-top: 20px; font-size: large;">Région de livraison :</mat-label>
+                    <mat-form-field appearance="outline" class="col-md-5">
+                      <input matInput formControlName="ShipRegion" placeholder="Région de livraison" required>
+                    </mat-form-field>
+                  </div>
+                  <div class="row">
+                    <mat-label class="col-md-2 label_form" style="margin-top: 20px; font-size: large;">Code postal de livraison :</mat-label>
+                    <mat-form-field appearance="outline" class="col-md-5">
+                      <input matInput formControlName="ShipPostalCode" placeholder="Code postal de livraison" required>
+                    </mat-form-field>
+                  </div>
+                  <div class="row">
+                    <mat-label class="col-md-2 label_form" style="margin-top: 20px; font-size: large;">Pays de livraison :</mat-label>
+                    <mat-form-field appearance="outline" class="col-md-5">
+                      <input matInput formControlName="ShipCountry" placeholder="Pays de livraison" required>
+                    </mat-form-field>
+                  </div>
+                  
+                <div class="row">
+                  <div class="col-md-7 align_button" >
+                    <button mat-raised-button color="primary"  class="btn" >{{buttonadd}}</button>
+                    <button mat-raised-button color="warn"  class="btn" (click)="Retour()"  >Annuler</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  

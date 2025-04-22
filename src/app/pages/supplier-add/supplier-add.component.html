@@ -1,0 +1,110 @@
+<main id="main" class="main">
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="pagetitle">
+                <nav>
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a routerLink="/dashboard">Home</a></li>
+                    <li class="breadcrumb-item">Ajouter Fournisseur</li>
+                    <li class="breadcrumb-item active">{{title}}</li>
+                  </ol>
+                </nav>
+              </div>
+              <h1 style="margin-bottom: 40px;">{{title}}</h1>
+  
+              <form *ngIf="form" [formGroup]="form" (ngSubmit)="onSub()">
+                <div class="row">
+                  <mat-label class="col-md-2 label_form">Nom de l'entreprise :</mat-label>
+                  <mat-form-field appearance="outline" class="col-md-5">
+                    <input matInput formControlName="CompanyName" placeholder="Nom de l'entreprise" required>
+                  </mat-form-field>
+                </div>
+  
+                <div class="row">
+                  <mat-label class="col-md-2 label_form">Nom du contact :</mat-label>
+                  <mat-form-field appearance="outline" class="col-md-5">
+                    <input matInput formControlName="ContactName" placeholder="Nom du contact" required>
+                  </mat-form-field>
+                </div>
+  
+                <div class="row">
+                  <mat-label class="col-md-2 label_form">Titre du contact :</mat-label>
+                  <mat-form-field appearance="outline" class="col-md-5">
+                    <input matInput formControlName="ContactTitle" placeholder="Titre du contact" required>
+                  </mat-form-field>
+                </div>
+  
+                <div class="row">
+                  <mat-label class="col-md-2 label_form">Adresse :</mat-label>
+                  <mat-form-field appearance="outline" class="col-md-5">
+                    <input matInput formControlName="Address" placeholder="Adresse" required>
+                  </mat-form-field>
+                </div>
+  
+                <div class="row">
+                  <mat-label class="col-md-2 label_form">Ville :</mat-label>
+                  <mat-form-field appearance="outline" class="col-md-5">
+                    <input matInput formControlName="City" placeholder="Ville" required>
+                  </mat-form-field>
+                </div>
+  
+                <div class="row">
+                  <mat-label class="col-md-2 label_form">Région :</mat-label>
+                  <mat-form-field appearance="outline" class="col-md-5">
+                    <input matInput formControlName="Region" placeholder="Région">
+                  </mat-form-field>
+                </div>
+  
+                <div class="row">
+                  <mat-label class="col-md-2 label_form">Code Postal :</mat-label>
+                  <mat-form-field appearance="outline" class="col-md-5">
+                    <input matInput formControlName="PostalCode" placeholder="Code Postal">
+                  </mat-form-field>
+                </div>
+  
+                <div class="row">
+                  <mat-label class="col-md-2 label_form">Pays :</mat-label>
+                  <mat-form-field appearance="outline" class="col-md-5">
+                    <input matInput formControlName="Country" placeholder="Pays">
+                  </mat-form-field>
+                </div>
+  
+                <div class="row">
+                  <mat-label class="col-md-2 label_form">Téléphone :</mat-label>
+                  <mat-form-field appearance="outline" class="col-md-5">
+                    <input matInput formControlName="Phone" placeholder="Téléphone">
+                  </mat-form-field>
+                </div>
+  
+                <div class="row">
+                  <mat-label class="col-md-2 label_form">Fax :</mat-label>
+                  <mat-form-field appearance="outline" class="col-md-5">
+                    <input matInput formControlName="Fax" placeholder="Fax">
+                  </mat-form-field>
+                </div>
+  
+                <div class="row">
+                  <mat-label class="col-md-2 label_form">Page d'accueil :</mat-label>
+                  <mat-form-field appearance="outline" class="col-md-5">
+                    <textarea matInput formControlName="HomePage" placeholder="Lien vers site web"></textarea>
+                  </mat-form-field>
+                </div>
+  
+                <div class="row">
+                  <div class="col-md-7 align_button">
+                    <button mat-raised-button color="primary" class="btn">{{buttonadd}}</button>
+                    <button mat-raised-button color="warn" class="btn" (click)="Retour()">Annuler</button>
+                  </div>
+                </div>
+              </form>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  

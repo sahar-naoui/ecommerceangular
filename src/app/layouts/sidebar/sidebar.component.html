@@ -3,18 +3,49 @@
       <div *ngIf="role == 'admin' || role == 'ROLE_ADMIN' ">
        <li class="nav-item"> <a class="nav-link " routerLink="/dashboard"> <i class="bi bi-grid"></i> <span>Dashboard</span> </a></li>
       </div>
+
+      <div *ngIf="role == 'admin' ">
+        <li class="nav-item"> <a class="nav-link collapsed" routerLink="/categorie"> <i class="bi bi-folder-fill"></i> <span>Categories</span> </a></li>
+      </div>
+      <div *ngIf="role == 'admin' ">
+        <li class="nav-item"> <a class="nav-link collapsed" routerLink="/region"> <i class="bi bi-globe"></i> <span>Régions</span> </a></li>
+      </div>
       <div *ngIf="role == 'admin'  ">
-        <li class="nav-item"> <a class="nav-link collapsed" routerLink="/list_user"> <i class="bi bi-person-workspace"></i> <span>Utilisateurs</span> </a></li>
+        <li class="nav-item"> <a class="nav-link collapsed" routerLink="/customer"> <i class="bi bi-person-circle"></i> <span>Utilisateurs customer</span> </a></li>
      </div>
-      <div *ngIf="role == 'admin'">
-      <li class="nav-item"> <a class="nav-link collapsed" routerLink="/matiere/list"> <i class="bi bi-layout-text-window-reverse"></i> <span>Matiéres</span> </a></li>
-      </div>
-      <div *ngIf="role == 'admin' ">
-       <li class="nav-item"> <a class="nav-link collapsed" routerLink="/groupe/list"> <i class="bi bi-people-fill"></i> <span>Groupes</span> </a></li>
-      </div>
-      <div *ngIf="role == 'admin' ">
-        <li class="nav-item"> <a class="nav-link collapsed" routerLink="/categorie"> <i class="bi bi-layout-text-window-reverse"></i> <span>Categorie</span> </a></li>
-      </div>
+     <div *ngIf="role == 'admin'  ">
+      <li class="nav-item"> <a class="nav-link collapsed" routerLink="/employee"> <i class="bi bi-person-badge"></i> <span>Employées</span> </a></li>
+    </div>
+    <div *ngIf="role == 'admin'  ">
+      <li class="nav-item"> <a class="nav-link collapsed" routerLink="/territorie"><i class="bi bi-geo-alt"></i> <span>Territories</span> </a></li>
+    </div>
+    <div *ngIf="role == 'admin'  ">
+      <li class="nav-item"> <a class="nav-link collapsed" routerLink="/empterritorie"> <i class="bi bi-people"></i> <span>Employés Territories</span> </a></li>
+    </div>
+    <div *ngIf="role == 'admin'  ">
+      <li class="nav-item"> <a class="nav-link collapsed" routerLink="/order"> <i class="bi bi-cart-check"></i>  <span>Ordres</span> </a></li>
+    </div>
+    <div *ngIf="role == 'admin'  ">
+      <li class="nav-item"> <a class="nav-link collapsed" routerLink="/supplier"> <i class="bi bi-building"></i> <span>Fournisseurs</span> </a></li>
+    </div>
+    <div *ngIf="role == 'admin'  ">
+      <li class="nav-item"> <a class="nav-link collapsed" routerLink="/product"> <i class="bi bi-box"></i><span>Produits</span> </a></li>
+    </div>
+    <div *ngIf="role == 'admin'  ">
+      <li class="nav-item"> <a class="nav-link collapsed" routerLink="/orderdetail">  <i class="bi bi-file-earmark-text"></i> <span>Détails Ordres</span> </a></li>
+    </div>
+    <div *ngIf="role == 'admin'  ">
+      <li class="nav-item"> <a class="nav-link collapsed" routerLink="/shipper">  <i class="bi bi-truck"></i><span>Transporteurs</span> </a></li>
+    </div>
+    <div *ngIf="role == 'admin'  ">
+      <li class="nav-item"> <a class="nav-link collapsed" routerLink="/list_user"> <i class="bi bi-person-workspace"></i> <span>Utilisateurs</span> </a></li>
+   </div>
+    <div *ngIf="role == 'admin'">
+    <li class="nav-item"> <a class="nav-link collapsed" routerLink="/matiere/list"> <i class="bi bi-layout-text-window-reverse"></i> <span>Matiéres</span> </a></li>
+    </div>
+    <div *ngIf="role == 'admin' ">
+     <li class="nav-item"> <a class="nav-link collapsed" routerLink="/groupe/list"> <i class="bi bi-people-fill"></i> <span>Groupes</span> </a></li>
+    </div>
       <div *ngIf="role == 'admin'">
         <li class="nav-item"> <a class="nav-link collapsed" routerLink="/affectation/list"> <i class="bi bi-person-check-fill"></i> <span>Affectation Enseignant</span> </a></li>
       </div>
