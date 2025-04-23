@@ -37,6 +37,7 @@ import { OrderdetailComponent } from './pages/orderdetail/orderdetail.component'
 import { OrderdetailAddComponent } from './pages/orderdetail-add/orderdetail-add.component';
 import { ShipperComponent } from './pages/shipper/shipper.component';
 import { ShipperAddComponent } from './pages/shipper-add/shipper-add.component';
+import {ProductClientComponent} from "./pages/product-client/product-client.component";
 const routes: Routes = [
   {
     path: '',
@@ -58,22 +59,22 @@ const routes: Routes = [
     ]
   },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'matiere/add', component: AjouterMatieresComponent },
-  { path: 'matiere/update/:id', component: AjouterMatieresComponent},
-  { path: 'affectation/update/:id', component: AffectationEnseignantComponent},
-  { path: 'affectation/add', component: AffectationEnseignantComponent},
-  { path: 'affectation/list', component: ListAffectationEnseignantComponent},
-  { path: 'user/add', component: AjouterUtilisateurComponent},
-  { path: 'user/update/:id', component: AjouterUtilisateurComponent},
-  { path: 'cours/add', component: AjouterCoursComponent},
-  { path: 'cours/list', component: ListCoursComponent},
-  { path: 'cours/update/:id', component: AjouterCoursComponent},
+  // { path: 'matiere/add', component: AjouterMatieresComponent },
+  // { path: 'matiere/update/:id', component: AjouterMatieresComponent},
+  // { path: 'affectation/update/:id', component: AffectationEnseignantComponent},
+  // { path: 'affectation/add', component: AffectationEnseignantComponent},
+  // { path: 'affectation/list', component: ListAffectationEnseignantComponent},
+  // { path: 'user/add', component: AjouterUtilisateurComponent},
+  // { path: 'user/update/:id', component: AjouterUtilisateurComponent},
+  // { path: 'cours/add', component: AjouterCoursComponent},
+  // { path: 'cours/list', component: ListCoursComponent},
+  // { path: 'cours/update/:id', component: AjouterCoursComponent},
   { path: 'login', component: LoginComponent },
-  { path: 'list_user', component: ListUtilisateurComponent },
-  { path: 'matiere/list', component: ListMatieresComponent },
-  { path: 'groupe/list', component: GroupListComponent },
-  { path: 'groupe/add', component: AjouterGroupComponent },
-  { path: 'groupe/update/:id', component: AjouterGroupComponent },
+  // { path: 'list_user', component: ListUtilisateurComponent },
+  // { path: 'matiere/list', component: ListMatieresComponent },
+  // { path: 'groupe/list', component: GroupListComponent },
+  // { path: 'groupe/add', component: AjouterGroupComponent },
+  // { path: 'groupe/update/:id', component: AjouterGroupComponent },
   { path: 'pages-register', component: PagesRegisterComponent },
   { path: 'pages-error404', component: PagesError404Component },
   { path: 'user-profile', component: UsersProfileComponent },
@@ -110,6 +111,7 @@ const routes: Routes = [
   {path:'shipper',component:ShipperComponent},
   {path:'shipper/add',component:ShipperAddComponent},
   {path:'shipper/edit/:id',component:ShipperAddComponent},
+  { path:'produitclient', component: ProductClientComponent },
 ];
 
 @NgModule({

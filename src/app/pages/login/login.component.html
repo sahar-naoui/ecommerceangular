@@ -1,17 +1,26 @@
 <main>
-
   <div class="container">
     <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+            
+            <!-- Logo centré au-dessus de la carte -->
+            <div class="d-flex justify-content-center py-4">
+              <a routerLink="/dashboard" class="d-flex align-items-center">
+                <img src="assets/img/MondoDelices1.png" alt="Logo Icône" style="height: 80px; margin-right: 10px;">
+                <img src="assets/img/MondoDelices2.png" alt="Logo Texte" style="height: 80px;">
+              </a>
+            </div>
 
+            <!-- Carte de connexion -->
             <div class="card mb-3">
               <div class="card-body">
                 <div class="pt-4 pb-2">
-                  <div class="d-flex justify-content-center py-2"> <a routerLink="/" class="logo d-flex align-items-center w-auto">
-                    <img style="max-height: 77px;margin-right: 11px;" src="assets/img/logo.png" alt=""> <span class="d-none d-lg-block">Log in</span> </a></div>
+                  <h5 class="card-title text-center pb-0 fs-4">Se connecter</h5>
+                  <p class="text-center small">Entrez vos informations personnelles pour vous connecter</p>
                 </div>
+
                 <form
                   *ngIf="!isLoggedIn"
                   name="form"
@@ -20,7 +29,7 @@
                   novalidate
                 >
                   <div class="col-12">
-                    <label  class="form-label">Email d'utilisateur</label>
+                    <label class="form-label">Adresse email</label>
                     <div class="input-group has-validation">
                       <input
                         type="text"
@@ -32,12 +41,13 @@
                         [ngClass]="{ 'is-invalid': f.submitted && email.errors }"
                       />
                       <div *ngIf="email.errors && f.submitted" class="invalid-feedback">
-                        email is required!
+                        L'adresse email est obligatoire !
                       </div>
-                      <div class="invalid-feedback">Please enter your email.</div>
+                      <div class="invalid-feedback">Veuillez entrer votre adresse email.</div>
                     </div>
                   </div>
-                  <div class="col-12">
+
+                  <div class="col-12 mt-3">
                     <label class="form-label">Mot de passe</label>
                     <input
                       #password="ngModel"
@@ -50,21 +60,31 @@
                       type="password"
                     />
                     <div *ngIf="password.errors && f.submitted" class="invalid-feedback">
-                      <div *ngIf="password.errors['required']">Mot de passe est obligatoire ! </div>
+                      <div *ngIf="password.errors['required']">Le mot de passe est obligatoire !</div>
                       <div *ngIf="password.errors['minlength']">
-                        Mot de passe doit être plus que 6 caratéres
+                        Le mot de passe doit contenir au moins 6 caractères.
                       </div>
                     </div>
                   </div>
-                  <div class="form-group">
+
+                  <div class="form-group mt-3">
                     <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger" role="alert">
-                      Vérifier votre nom et mot de passe !!
+                      Vérifiez votre email et mot de passe !
                     </div>
-                  </div><br>
-                  <div class="col-12"> <button class="btn btn-primary w-100" type="submit">Login</button></div>
-                  <div class="col-12"><p class="small mb-0">Vous n'avez pas de compte ? <a routerLink="/pages-register">Créer un compte</a></p>
-                </div>
+                  </div>
+
+                  <div class="col-12 mt-3">
+                    <button class="btn btn-primary w-100" type="submit">Se connecter</button>
+                  </div>
+
+                  <div class="col-12 mt-3">
+                    <p class="small mb-0">
+                      Vous n'avez pas de compte ?
+                      <a routerLink="/pages-register">Créer un compte</a>
+                    </p>
+                  </div>
                 </form>
+
               </div>
             </div>
 
@@ -73,6 +93,4 @@
       </div>
     </section>
   </div>
-
 </main>
-

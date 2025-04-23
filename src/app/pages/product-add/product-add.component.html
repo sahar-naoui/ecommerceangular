@@ -14,15 +14,16 @@
                 </nav>
               </div>
               <h1 style="margin-bottom: 40px;">{{ title }}</h1>
-  
-              <form [formGroup]="form" (ngSubmit)="onSub()">
+
+              <form role="form" [formGroup]="form" (ngSubmit)="onSub()" aria-label="Formulaire de produit">
+
                 <div class="row">
                   <mat-label class="col-md-2 label_form">Nom du produit :</mat-label>
                   <mat-form-field appearance="fill" class="col-md-5">
                     <input matInput formControlName="ProductName" placeholder="Nom du produit" required />
                   </mat-form-field>
                 </div>
-  
+
                 <div class="row">
                   <mat-label class="col-md-2 label_form">Fournisseur :</mat-label>
                   <mat-form-field appearance="fill" class="col-md-5">
@@ -34,7 +35,7 @@
                     </mat-select>
                   </mat-form-field>
                 </div>
-  
+
                 <div class="row">
                   <mat-label class="col-md-2 label_form">Catégorie :</mat-label>
                   <mat-form-field appearance="fill" class="col-md-5">
@@ -46,59 +47,64 @@
                     </mat-select>
                   </mat-form-field>
                 </div>
-  
+
                 <div class="row">
                   <mat-label class="col-md-2 label_form">Quantité par unité :</mat-label>
                   <mat-form-field appearance="fill" class="col-md-5">
                     <input matInput formControlName="QuantityPerUnit" placeholder="ex: 10 boîtes de 20" required />
                   </mat-form-field>
                 </div>
-  
+
                 <div class="row">
                   <mat-label class="col-md-2 label_form">Prix unitaire :</mat-label>
                   <mat-form-field appearance="fill" class="col-md-5">
                     <input matInput type="number" formControlName="UnitPrice" placeholder="Prix unitaire" required />
                   </mat-form-field>
                 </div>
-  
+
                 <div class="row">
                   <mat-label class="col-md-2 label_form">Unités en stock :</mat-label>
                   <mat-form-field appearance="fill" class="col-md-5">
                     <input matInput type="number" formControlName="UnitsInStock" placeholder="Unités en stock" required />
                   </mat-form-field>
                 </div>
-  
+
                 <div class="row">
                   <mat-label class="col-md-2 label_form">Unités commandées :</mat-label>
                   <mat-form-field appearance="fill" class="col-md-5">
                     <input matInput type="number" formControlName="UnitsOnOrder" placeholder="Unités Commandées" required />
                   </mat-form-field>
                 </div>
-  
+
                 <div class="row">
                   <mat-label class="col-md-2 label_form">Seuil de réapprovisionnement :</mat-label>
                   <mat-form-field appearance="fill" class="col-md-5">
                     <input matInput type="number" formControlName="ReorderLevel" placeholder="Seuil de réapprovisionnement" required />
                   </mat-form-field>
                 </div>
-  
+                <div class="row">
+                  <mat-label class="col-md-2 label_form">Image URL :</mat-label>
+                  <mat-form-field appearance="fill" class="col-md-5">
+                    <input matInput formControlName="ImageUrl" placeholder="URL de l'image du produit" required />
+                  </mat-form-field>
+                </div>
+
                 <div class="row">
                   <mat-label class="col-md-2 label_form">Désactivé :</mat-label>
                   <mat-checkbox formControlName="Discontinued" class="col-md-5">Produit désactivé</mat-checkbox>
                 </div>
-  
+
                 <div class="row">
                   <div class="col-md-7 align_button">
-                    <button mat-raised-button color="primary" class="btn">{{ buttonadd }}</button>
-                    <button mat-raised-button color="warn" class="btn" (click)="Retour()">Annuler</button>
+                    <button type="submit" mat-raised-button color="primary" class="btn">{{ buttonadd }}</button>
+                    <button type="button" mat-raised-button color="warn" class="btn" (click)="Retour()">Annuler</button>
                   </div>
                 </div>
               </form>
-  
+
             </div>
           </div>
         </div>
       </div>
     </section>
   </main>
-  

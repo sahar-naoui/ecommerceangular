@@ -19,9 +19,9 @@ export class ProductAddComponent implements OnInit {
   buttonadd: any;
   product: Product = new Product();
     // @ts-ignore
-  suppliers: Observable<Supplier[]>;
-    // @ts-ignore
-  categories: Observable<Categorie[]>;
+  suppliers: Supplier[] = [];
+  categories: Categorie[] = [];
+
   private CurrentItemId: any;
   constructor(private productService: ProductService,private router: Router , private activatedRoute: ActivatedRoute,
     private categorieService: CategorieService, private supplierService: SupplierService
@@ -29,10 +29,10 @@ export class ProductAddComponent implements OnInit {
 
   ngOnInit(): void {
     this.supplierService.getListSupplier().subscribe(data => {
-      this.suppliers = data.Data; 
+      this.suppliers = data.Data;
     });
     this.categorieService.getListCategorie().subscribe(data => {
-      this.categories = data.Data; 
+      this.categories = data.Data;
     });
     // @ts-ignore
     this.CurrentItemId = this.activatedRoute.snapshot.params.id;
@@ -63,6 +63,7 @@ export class ProductAddComponent implements OnInit {
       UnitsOnOrder: new FormControl(null, [Validators.required]),
       ReorderLevel: new FormControl(null, [Validators.required]),
       Discontinued: new FormControl(false),
+      ImageUrl: new FormControl(null),
     });
   }
   private initForm1(data: any) {
@@ -76,6 +77,7 @@ export class ProductAddComponent implements OnInit {
       UnitsOnOrder: new FormControl(data.UnitsOnOrder, [Validators.required]),
       ReorderLevel: new FormControl(data.ReorderLevel, [Validators.required]),
       Discontinued: new FormControl(data.Discontinued ?? false),
+      ImageUrl: new FormControl(data.ImageUrl),
     });
   }
   Retour() {
@@ -118,7 +120,7 @@ export class ProductAddComponent implements OnInit {
             },
             error => console.log('Erreur lors de l’enregistrement:', error)
           );
-          
+
       }
     }
   }
@@ -135,6 +137,7 @@ export class ProductAddComponent implements OnInit {
       UnitsOnOrder: this.form.value.UnitsOnOrder,
       ReorderLevel: this.form.value.ReorderLevel,
       Discontinued: this.form.value.Discontinued,
+      ImageUrl: this.form.value.ImageUrl
     };
     this.productService.updateProduct(obj,id)
       .subscribe(data => {

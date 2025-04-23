@@ -64,6 +64,7 @@ import { OrderdetailComponent } from './pages/orderdetail/orderdetail.component'
 import { OrderdetailAddComponent } from './pages/orderdetail-add/orderdetail-add.component';
 import { ShipperComponent } from './pages/shipper/shipper.component';
 import { ShipperAddComponent } from './pages/shipper-add/shipper-add.component';
+import {ProductClientComponent} from "./pages/product-client/product-client.component";
 
 @NgModule({
   declarations: [
@@ -111,7 +112,8 @@ import { ShipperAddComponent } from './pages/shipper-add/shipper-add.component';
     OrderdetailComponent,
     OrderdetailAddComponent,
     ShipperComponent,
-    ShipperAddComponent
+    ShipperAddComponent,
+    ProductClientComponent
   ],
     imports: [
         BrowserModule,

@@ -14,7 +14,7 @@ import { ProductService } from 'src/app/_services/product.service';
 })
 export class ProductComponent implements OnInit {
 
-  displayedColumns: string[] = ["ProductID","ProductName","SupplierID","CategoryID","QuantityPerUnit","UnitPrice","UnitsInStock","UnitsOnOrder","ReorderLevel","Discontinued","Action"];
+  displayedColumns: string[] = ["ProductID","ProductName","SupplierID","CategoryID","QuantityPerUnit","UnitPrice","UnitsInStock","UnitsOnOrder","ReorderLevel","Discontinued","ImageUrl","Action"];
     // @ts-ignore
   dataSource: MatTableDataSource<Product>;
   // @ts-ignore

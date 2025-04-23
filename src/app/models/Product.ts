@@ -8,6 +8,6 @@ export class Product {
     UnitsInStock!: number;
     UnitsOnOrder!: number;
     ReorderLevel!: number;
-    Discontinued?: boolean; 
+    Discontinued?: boolean;
+    ImageUrl?: string;
 }
-  
