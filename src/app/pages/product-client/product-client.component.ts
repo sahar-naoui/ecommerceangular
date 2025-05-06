@@ -16,7 +16,7 @@ export class ProductClientComponent implements OnInit {
 
   categories: Categorie[] = [];
   selectedCategoryId: string = ''; // ID sélectionné
-
+  selectedProduct: Product | null = null;
   constructor(
     private productService: ProductService,
     private categoryService: CategorieService,
@@ -42,6 +42,13 @@ export class ProductClientComponent implements OnInit {
       const categoryId = BigInt(this.selectedCategoryId);
       this.products = this.allProducts.filter(p => BigInt(p.CategoryID) === categoryId);
 
+    }
+  }
+  toggleStock(product: Product) {
+    if (this.selectedProduct === product) {
+      this.selectedProduct = null; // clic pour refermer
+    } else {
+      this.selectedProduct = product; // clic pour afficher
     }
   }
 }

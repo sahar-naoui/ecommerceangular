@@ -6,6 +6,4 @@ export class User {
   password!:string
   role!:string
   id!: bigint;
-
-
 }

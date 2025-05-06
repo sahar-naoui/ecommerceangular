@@ -5,4 +5,14 @@
     background-color: #fff;
 
   }
-
+  .sidebar-nav .nav-link.active {
+    background-color: #ac10ac; /* Couleur bleue bootstrap */
+    color: white !important;
+    font-weight: bold;
+    border-radius: 5px;
+  }
+  
+  .sidebar-nav .nav-link.active i {
+    color: white;
+  }
+  

@@ -1,25 +1,76 @@
 <main id="main" class="main">
-
     <section class="section dashboard">
        <div class="row">
-          <div class="col-lg-8">
-             <div class="row">
-                <div class="col-xxl-4 col-xl-12">
-                   <!-- <div class="card info-card customers-card">
-                      <div class="card-body"> -->
-                         <!-- <h5 class="card-title">Nombre d'enseignant de IIT</h5>
-                         <div class="d-flex align-items-center">
-                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center"> <i class="bi bi-people"></i></div>
-                            <div class="ps-3">
-                               <h6>{{nbEnseignant}}</h6> -->
-<!--                               <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>-->
-                            <!-- </div>
-                         </div> -->
-                      <!-- </div>
-                   </div> -->
-                </div>
-             </div>
+         <div class="summary-cards">
+            <div class="card">🚚 Transporteurs : {{ shippers.length }}</div>
+            <div class="card">📦 Produits : {{ products.length }}</div>
+            <div class="card">📄 Ordres : {{ orders.length }}</div>
+            <div class="card">🏭 Fournisseurs : {{ suppliers.length }}</div>
+            <div class="card">👤 Utilisateurs : {{ customers.length }}</div>
+            <div class="card">🗂️ Catégories : {{ categories.length }}</div>
+            <div class="card">🧑‍💼 Employés : {{ employees.length }}</div>
+            <div class="card">🗺️ Territoires : {{ territories.length }}</div>
+            <div class="card">🌍 Régions : {{ regions.length }}</div>            
+          </div>
+          <div class="dashboard-container">
+            <h2>📊 Tableau de bord analytique</h2>
+            <div class="chart-container">
+              <canvas 
+                  baseChart 
+                  [datasets]="barChartData"
+                  [labels]="barChartLabels"
+                  [options]="barChartOptions"
+                  [type]="barChartType">
+               </canvas>
+            </div>
+          </div>
+         <div class="dashboard-container">
+            <div class="charts-grid">
+               <!-- Graphique Radar -->
+               <div class="chart-box">
+                  <h4>Ressources internes (Radar)</h4>
+                  <canvas baseChart
+                           [datasets]="radarChartData"
+                           [labels]="radarChartLabels"
+                           [type]="radarChartType">
+                  </canvas>
+               </div>
+               <!-- Graphique Polar -->
+               <div class="chart-box">
+                  <h4>Répartition clients par pays (Polar Area)</h4>
+                  <canvas baseChart
+                           [datasets]="polarChartData"
+                           [labels]="polarChartLabels"
+                           [type]="polarChartType">
+                  </canvas>
+               </div>
+               <!-- Graphique Pie -->
+               <div class="chart-box">
+                  <h4>Produits vs Fournisseurs (Pie)</h4>
+                  <canvas baseChart
+                  #pieChart
+                           [datasets]="pieChartData"
+                           [labels]="pieChartLabels"
+                           [options]="barChartOptions"
+                           [type]="pieChartType">
+                  </canvas>
+               </div>
+            </div>
+         </div>
+         <div class="chart-container">
+            <canvas baseChart
+              #lineChart
+              [datasets]="lineChartData"
+              [labels]="lineChartLabels"
+              [options]="lineChartOptions"
+              [type]="lineChartType">
+            </canvas>
           </div>
        </div>
     </section>
  </main>
+
+ 
+
+ 
+ 

@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
       next: data => {
         this.storageService.saveUser(data.Data);
         window.sessionStorage.setItem("token", JSON.stringify(data.Data.accessToken.Token));
+        window.sessionStorage.setItem("username", JSON.stringify(data.Data.User.name));
         window.sessionStorage.setItem("id", JSON.stringify(data.Data.User.email));
         window.sessionStorage.setItem("role", JSON.stringify(data.Data.UserRoles[0]));
         window.sessionStorage.setItem("email", JSON.stringify(data.Data.User.email));

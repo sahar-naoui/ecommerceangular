@@ -48,11 +48,20 @@
                     <p class="price">
                       <strong>Prix:</strong> {{ product.UnitPrice | currency:'TND' }}
                     </p>
-                    <button class="btn btn-buy w-100">Ajouter au panier</button>
+
+                    <button class="btn btn-buy w-100" (click)="toggleStock(product)">
+                      Voir la quantité disponible
+                    </button>
+
+                    <!-- Affichage de la quantité -->
+                    <div *ngIf="selectedProduct === product" class="mt-3 alert alert-info text-center">
+                      Quantité en stock : <strong>{{ product.UnitsInStock }}</strong>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+
 
           </div>
         </div>

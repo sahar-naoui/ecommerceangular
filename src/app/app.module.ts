@@ -65,6 +65,8 @@ import { OrderdetailAddComponent } from './pages/orderdetail-add/orderdetail-add
 import { ShipperComponent } from './pages/shipper/shipper.component';
 import { ShipperAddComponent } from './pages/shipper-add/shipper-add.component';
 import {ProductClientComponent} from "./pages/product-client/product-client.component";
+import { NgChartsModule } from 'ng2-charts';
+
 
 @NgModule({
   declarations: [
@@ -134,6 +136,7 @@ import {ProductClientComponent} from "./pages/product-client/product-client.comp
         MatSlideToggleModule,
         MatDatepickerModule,
         MatNativeDateModule,
+        NgChartsModule,
 
 
     ],
