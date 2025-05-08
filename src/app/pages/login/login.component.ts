@@ -41,7 +41,13 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.storageService.getUser().roles;
-        this.router.navigate(['/dashboard'])
+              // Redirection selon le rôle
+      const role = data.Data.UserRoles[0];
+      if (role === 'admin') {
+        this.router.navigate(['/dashboard']);
+      } else {
+        this.router.navigate(['/produitclient']);
+      }
       },
       error: err => {
         this.errorMessage = err.error.message;

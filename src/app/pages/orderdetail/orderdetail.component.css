@@ -3,6 +3,7 @@
   }
   table {
     width: 100%;
+    table-layout: fixed;
   }
   .button-add{
     margin-top:-50px;
@@ -16,16 +17,21 @@
   td, th {
     width: 25%;
   }
-  .example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-  }
-  
-  .example-full-width {
-    width: 100%;
-  }
+
   button {
     margin-right: 8px;
   }
-  
+
+th.mat-header-cell, td.mat-cell {
+  width: auto;
+  padding: 8px;
+}
+
+th.mat-header-cell {
+  text-align: center;
+  font-weight: bold;
+}
+
+mat-icon {
+  margin-right: 5px;
+}

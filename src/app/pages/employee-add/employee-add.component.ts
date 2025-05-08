@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import { ActivatedRoute, Router } from "@angular/router";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 import Swal from "sweetalert2";
 import { EmployeeService } from 'src/app/_services/employee.service';
 import { Employee } from 'src/app/models/Employee';
@@ -11,118 +11,127 @@ import { Employee } from 'src/app/models/Employee';
   styleUrls: ['./employee-add.component.css']
 })
 export class EmployeeAddComponent implements OnInit {
-  form: any ;
+  form: any;
   title: any;
   buttonadd: any;
   employee: Employee = new Employee();
   private CurrentItemId: any;
-  constructor(private employeeService: EmployeeService,private router: Router , private activatedRoute: ActivatedRoute) { }
+
+  constructor(private employeeService: EmployeeService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    // @ts-ignore
+// @ts-ignore
     this.CurrentItemId = this.activatedRoute.snapshot.params.id;
     if (!!this.CurrentItemId) {
       this.title = 'Modifier Employee';
       this.buttonadd = 'Modifier ';
-      // @ts-ignore
       this.employeeService.getEmployee(this.CurrentItemId)
         .subscribe(data => {
-          // @ts-ignore
-          this.compte = data;
           this.initForm1(data.Data);
         }, error => console.log(error));
-    }else{
+    } else {
       this.buttonadd = 'Enregistrer ';
       this.title = 'Ajouter Employee';
       this.initForm();
     }
   }
+
   private initForm() {
     this.form = new FormGroup({
-      FirstName : new FormControl(null , [Validators.required]),
-      LastName : new FormControl(null , [Validators.required]),
-      Title : new FormControl(null , [Validators.required]),
-      HireDate : new FormControl(null),
-      BirthDate : new FormControl(null),
-      TitleOfCourtesy : new FormControl(null , [Validators.required]),
-      Address : new FormControl(null , [Validators.required]),
-      City : new FormControl(null , [Validators.required]),
-      Region : new FormControl(null , [Validators.required]),
-      PostalCode : new FormControl(null , [Validators.required]),
-      Country : new FormControl(null , [Validators.required]),
-      HomePhone : new FormControl(null , [Validators.required]),
-      Extension : new FormControl(null , [Validators.required]),
-      Notes : new FormControl(null , [Validators.required]),
-      ReportsTo : new FormControl(null , [Validators.required]),
-      Salary : new FormControl(null , [Validators.required]),
+      FirstName: new FormControl(null, [Validators.required]),
+      LastName: new FormControl(null, [Validators.required]),
+      Title: new FormControl(null, [Validators.required]),
+      HireDate: new FormControl(null),
+      BirthDate: new FormControl(null),
+      TitleOfCourtesy: new FormControl(null, [Validators.required]),
+      Address: new FormControl(null, [Validators.required]),
+      City: new FormControl(null, [Validators.required]),
+      Region: new FormControl(null, [Validators.required]),
+      PostalCode: new FormControl(null, [Validators.required]),
+      Country: new FormControl(null, [Validators.required]),
+      HomePhone: new FormControl(null, [Validators.required]),
+      Extension: new FormControl(null, [Validators.required]),
+      Notes: new FormControl(null, [Validators.required]),
+      ReportsTo: new FormControl(null, [Validators.required]),
+      Salary: new FormControl(null, [Validators.required]),
     });
   }
+
   private initForm1(data: any) {
     this.form = new FormGroup({
-      FirstName : new FormControl(data.FirstName , [Validators.required]),
-      LastName : new FormControl(data.LastName , [Validators.required]),
-      Title : new FormControl(data.Title , [Validators.required]),
-      BirthDate : new FormControl(data.BirthDate),      
-      HireDate : new FormControl(data.HireDate),
-      TitleOfCourtesy : new FormControl(data.TitleOfCourtesy , [Validators.required]),
-      Address : new FormControl(data.Address , [Validators.required]),
-      City : new FormControl(data.City , [Validators.required]),
-      Region : new FormControl(data.Region , [Validators.required]),
-      PostalCode : new FormControl(data.PostalCode , [Validators.required]),
-      Country : new FormControl(data.Country , [Validators.required]),
-      HomePhone : new FormControl(data.HomePhone , [Validators.required]),
-      Extension : new FormControl(data.Extension , [Validators.required]),
-      Notes : new FormControl(data.Notes , [Validators.required]),
-      ReportsTo : new FormControl(data.ReportsTo , [Validators.required]),
-      Salary : new FormControl(data.Salary , [Validators.required]),
+      FirstName: new FormControl(data.FirstName, [Validators.required]),
+      LastName: new FormControl(data.LastName, [Validators.required]),
+      Title: new FormControl(data.Title, [Validators.required]),
+      BirthDate: new FormControl(data.BirthDate ? new Date(data.BirthDate) : null, [Validators.required]),
+      HireDate: new FormControl(data.HireDate ? new Date(data.HireDate) : null, [Validators.required]),
+      TitleOfCourtesy: new FormControl(data.TitleOfCourtesy, [Validators.required]),
+      Address: new FormControl(data.Address, [Validators.required]),
+      City: new FormControl(data.City, [Validators.required]),
+      Region: new FormControl(data.Region, [Validators.required]),
+      PostalCode: new FormControl(data.PostalCode, [Validators.required]),
+      Country: new FormControl(data.Country, [Validators.required]),
+      HomePhone: new FormControl(data.HomePhone, [Validators.required]),
+      Extension: new FormControl(data.Extension, [Validators.required]),
+      Notes: new FormControl(data.Notes, [Validators.required]),
+      ReportsTo: new FormControl(data.ReportsTo, [Validators.required]),
+      Salary: new FormControl(data.Salary, [Validators.required]),
     });
   }
+
   Retour() {
     this.router.navigate(['/employee']);
   }
+
   onSub() {
     // @ts-ignore
     this.CurrentItemId = this.activatedRoute.snapshot.params.id;
     if (!!this.CurrentItemId) {
-      // @ts-ignore
       Swal.fire({
         title: 'Voulez-vous enregistrer les modifications?',
         showCancelButton: true,
         confirmButtonText: 'Enregistrer',
         cancelButtonText: 'Annuler',
       }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
-          this.updateEmployee( this.CurrentItemId);
-        } else if (result.isDenied) {
-          Swal.fire('Changes are not saved', '', 'info');
+          this.updateEmployee(this.CurrentItemId);
         }
       });
-    }
-    else{
-      if(this.form.value.FirstName != null&&this.form.value.LastName != null&& this.form.value.Title != null&& 
-        this.form.value.TitleOfCourtesy != null&& this.form.value.Address != null&& 
-        this.form.value.City != null&& this.form.value.Region != null&& 
-        this.form.value.PostalCode != null&& this.form.value.Country != null&& 
-        this.form.value.HomePhone != null&& this.form.value.Extension != null&& 
-        this.form.value.Notes != null&& this.form.value.ReportsTo != null&& 
-        this.form.value.Salary != null) {
-          this.employeeService.register(this.form.value).subscribe(
-            data => {
-              console.log('Réponse backend:', data);
-              this.employee = new Employee();
-              Swal.fire('', 'Action effectuée avec succès!', 'success');
-              this.router.navigate(['/employee']);
-            },
-            error => console.log('Erreur lors de l’enregistrement:', error)
-          );
-          
+    } else {
+      if (
+        this.form.value.FirstName != null && this.form.value.LastName != null && this.form.value.Title != null &&
+        this.form.value.TitleOfCourtesy != null && this.form.value.Address != null &&
+        this.form.value.City != null && this.form.value.Region != null &&
+        this.form.value.PostalCode != null && this.form.value.Country != null &&
+        this.form.value.HomePhone != null && this.form.value.Extension != null &&
+        this.form.value.Notes != null && this.form.value.ReportsTo != null &&
+        this.form.value.Salary != null
+      ) {
+        this.employeeService.register(this.form.value).subscribe(
+          data => {
+            console.log('Réponse backend:', data);
+            this.employee = new Employee();
+            Swal.fire('', 'Action effectuée avec succès!', 'success');
+            this.router.navigate(['/employee']);
+          },
+          error => console.log('Erreur lors de l’enregistrement:', error)
+        );
       }
     }
   }
+
+  // ✅ Fonction pour formater la date au format MySQL
+  private formatDateForMySQL(date: string | Date): string {
+    const d = new Date(date);
+    const yyyy = d.getFullYear();
+    const mm = ('0' + (d.getMonth() + 1)).slice(-2);
+    const dd = ('0' + d.getDate()).slice(-2);
+    const hh = ('0' + d.getHours()).slice(-2);
+    const min = ('0' + d.getMinutes()).slice(-2);
+    const ss = ('0' + d.getSeconds()).slice(-2);
+    return `${yyyy}-${mm}-${dd} ${hh}:${min}:${ss}`;
+  }
+
   private updateEmployee(id: any) {
-    console.log(this.form.value);
-    // @ts-ignore
     let obj: any = {
       FirstName: this.form.value.FirstName,
       LastName: this.form.value.LastName,
@@ -139,17 +148,25 @@ export class EmployeeAddComponent implements OnInit {
       ReportsTo: this.form.value.ReportsTo,
       Salary: this.form.value.Salary
     };
+
+    // ✅ Application du format pour les dates
     if (this.form.value.BirthDate) {
-      obj.BirthDate = this.form.value.BirthDate;
+      obj.BirthDate = this.formatDateForMySQL(this.form.value.BirthDate);
     }
     if (this.form.value.HireDate) {
-      obj.HireDate = this.form.value.HireDate;
+      obj.HireDate = this.formatDateForMySQL(this.form.value.HireDate);
     }
-    this.employeeService.updateEmployee(obj,id)
-      .subscribe(data => {
-        this.employee = new Employee();
-        this.router.navigate(['/employee']);
-      }, error => console.log(error));
-  }
 
+    this.employeeService.updateEmployee(obj, id).subscribe(
+      data => {
+        this.employee = new Employee();
+        Swal.fire('', 'Employé modifié avec succès !', 'success');
+        this.router.navigate(['/employee']);
+      },
+      error => {
+        console.log(error);
+        Swal.fire('Erreur', 'Une erreur est survenue lors de la mise à jour', 'error');
+      }
+    );
+  }
 }

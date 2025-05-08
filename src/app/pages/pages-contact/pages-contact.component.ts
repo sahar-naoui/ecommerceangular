@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-pages-contact',
   templateUrl: './pages-contact.component.html',
   styleUrls: ['./pages-contact.component.css']
 })
-export class PagesContactComponent implements OnInit {
+export class PagesContactComponent {
+  showLoading = false;
+  showSentMessage = false;
+  showError = false;
 
-  constructor() { }
+  onSubmit(): void {
+    this.showLoading = true;
 
-  ngOnInit(): void {
+    // Simulation d’un envoi
+    setTimeout(() => {
+      this.showLoading = false;
+      this.showSentMessage = true;
+    }, 1500); // 1.5 secondes de chargement simulé
   }
-
 }

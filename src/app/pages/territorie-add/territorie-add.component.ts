@@ -62,34 +62,37 @@ export class TerritorieAddComponent implements OnInit {
   }
 
   onSub() {
-    // @ts-ignore
-    this.territorieService.register(this.form.value).subscribe(
-      data => {
-        this.territorie = new Territorie();
-        Swal.fire('', 'Action effectuée avec succès!', 'success');
-        this.router.navigate(['/territorie']);
-      },
-      error => {
-        console.error(error);
-        const backendMessage = error.error?.message || '';
-    
-        if (backendMessage.includes('SQLSTATE[23000]')) {
-          Swal.fire({
-            icon: 'error',
-            title: 'Territory ID existant',
-            text: 'Veuillez choisir un autre Territory ID car il existe déjà.',
-          });
-        } else {
-          Swal.fire({
-            icon: 'error',
-            title: 'Erreur',
-            text: backendMessage || 'Erreur interne du serveur',
-            footer: 'Code erreur : ' + error.status
-          });
+    if (this.CurrentItemId) {
+      this.updateTerritorie(this.CurrentItemId);
+    } else {
+      this.territorieService.register(this.form.value).subscribe(
+        data => {
+          this.territorie = new Territorie();
+          Swal.fire('', 'Ajout effectué avec succès!', 'success');
+          this.router.navigate(['/territorie']);
+        },
+        error => {
+          console.error(error);
+          const backendMessage = error.error?.message || '';
+          if (backendMessage.includes('SQLSTATE[23000]')) {
+            Swal.fire({
+              icon: 'error',
+              title: 'Territory ID existant',
+              text: 'Veuillez choisir un autre Territory ID car il existe déjà.',
+            });
+          } else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Erreur',
+              text: backendMessage || 'Erreur interne du serveur',
+              footer: 'Code erreur : ' + error.status
+            });
+          }
         }
-      }
-    );
-  }    
+      );
+    }
+  }
+    
   private updateTerritorie(id: any) {
     // console.log(this.form.value);
     // @ts-ignore

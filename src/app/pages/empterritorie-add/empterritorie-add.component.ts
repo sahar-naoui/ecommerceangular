@@ -67,26 +67,29 @@ export class EmpterritorieAddComponent implements OnInit {
   }
 
   onSub() {
-    // @ts-ignore
-    this.empterritorieservice.register(this.form.value).subscribe(
-      data => {
-        this.empterritorie = new Empterritorie();
-        Swal.fire('', 'Action effectuée avec succès!', 'success');
-        this.router.navigate(['/empterritorie']);
-      },
-      error => {
-        console.error(error);
-        const backendMessage = error.error?.message || '';
-      
-        Swal.fire({
-          icon: 'error',
-          title: 'Erreur',
-          text: backendMessage || 'Erreur interne du serveur',
-          footer: 'Code erreur : ' + error.status
-        });
-      }      
-    );
-  }    
+    if (this.CurrentItemId) {
+      this.updateEmpterritorie(this.CurrentItemId);
+    } else {
+      this.empterritorieservice.register(this.form.value).subscribe(
+        data => {
+          this.empterritorie = new Empterritorie();
+          Swal.fire('', 'Ajout effectué avec succès!', 'success');
+          this.router.navigate(['/empterritorie']);
+        },
+        error => {
+          console.error(error);
+          const backendMessage = error.error?.message || '';
+          Swal.fire({
+            icon: 'error',
+            title: 'Erreur',
+            text: backendMessage || 'Erreur interne du serveur',
+            footer: 'Code erreur : ' + error.status
+          });
+        }
+      );
+    }
+  }
+   
   private updateEmpterritorie(id: any) {
     // console.log(this.form.value);
     // @ts-ignore

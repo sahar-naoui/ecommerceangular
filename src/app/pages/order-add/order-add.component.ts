@@ -20,10 +20,9 @@ export class OrderAddComponent implements OnInit {
   title: any;
   buttonadd: any;
   order: Order = new Order();
-  // @ts-ignore
-  customers: Observable<Customer[]>;
-  // @ts-ignore
-  employees: Observable<Employee[]>;
+customers: Customer[] = [];
+employees: Employee[] = [];
+
   private CurrentItemId: any;
   constructor(private orderService: OrderService,private router: Router, private activatedRoute: ActivatedRoute,
      private customerService: CustomerService, private employeeService: EmployeeService) { }
@@ -43,6 +42,7 @@ export class OrderAddComponent implements OnInit {
       // @ts-ignore
       this.orderService.getOrder(this.CurrentItemId)
         .subscribe(data => {
+          console.log("Données reçues pour Order:", data.Data);
           // @ts-ignore
           this.compte = data;
           this.initForm1(data.Data);
@@ -72,21 +72,23 @@ export class OrderAddComponent implements OnInit {
   }
   private initForm1(data: any) {
     this.form = new FormGroup({
-      CustomerID : new FormControl(data.CustomerID , [Validators.required]),
-      EmployeeID : new FormControl(data.EmployeeID , [Validators.required]),
-      OrderDate : new FormControl(data.OrderDate , [Validators.required]),
-      RequiredDate : new FormControl(data.RequiredDate , [Validators.required]),
-      ShippedDate : new FormControl(data.ShippedDate , [Validators.required]),
-      ShipVia : new FormControl(data.ShipVia , [Validators.required]),
-      Freight : new FormControl(data.Freight , [Validators.required]),
-      ShipName : new FormControl(data.ShipName , [Validators.required]),
-      ShipAddress : new FormControl(data.ShipAddress , [Validators.required]),
-      ShipCity : new FormControl(data.ShipCity , [Validators.required]),
-      ShipRegion : new FormControl(data.ShipRegion , [Validators.required]),
-      ShipPostalCode : new FormControl(data.ShipPostalCode , [Validators.required]),
-      ShipCountry : new FormControl(data.ShipCountry , [Validators.required]),
+      CustomerID: new FormControl(data.CustomerID, [Validators.required]),
+      EmployeeID: new FormControl(data.EmployeeID, [Validators.required]),
+      OrderDate: new FormControl(data.OrderDate ? new Date(data.OrderDate) : null, [Validators.required]),
+      RequiredDate: new FormControl(data.RequiredDate ? new Date(data.RequiredDate) : null, [Validators.required]),
+      ShippedDate: new FormControl(data.ShippedDate ? new Date(data.ShippedDate) : null, [Validators.required]),
+      ShipVia: new FormControl(data.ShipVia, [Validators.required]),
+      Freight: new FormControl(data.Freight, [Validators.required]),
+      ShipName: new FormControl(data.ShipName, [Validators.required]),
+      ShipAddress: new FormControl(data.ShipAddress, [Validators.required]),
+      ShipCity: new FormControl(data.ShipCity, [Validators.required]),
+      ShipRegion: new FormControl(data.ShipRegion, [Validators.required]),
+      ShipPostalCode: new FormControl(data.ShipPostalCode, [Validators.required]),
+      ShipCountry: new FormControl(data.ShipCountry, [Validators.required]),
     });
   }
+  
+  
   Retour() {
     this.router.navigate(['/order']);
   }
@@ -109,47 +111,58 @@ export class OrderAddComponent implements OnInit {
       ShippedDate: this.formatDateForMySQL(this.form.value.ShippedDate),
     };
   
-    this.orderService.register(formattedOrder).subscribe(
-      data => {
-        this.order = new Order();
-        Swal.fire('', 'Action effectuée avec succès!', 'success');
-        this.router.navigate(['/order']);
-      },
-      error => {
-        console.error(error);
-        const backendMessage = error.error?.message || '';
+    // @ts-ignore
+    this.CurrentItemId = this.activatedRoute.snapshot.params.id;
   
-        if (backendMessage.includes('SQLSTATE[23000]')) {
-          Swal.fire({
-            icon: 'error',
-            title: 'Territory ID existant',
-            text: 'Veuillez choisir un autre Territory ID car il existe déjà.',
-          });
-        } else {
-          Swal.fire({
-            icon: 'error',
-            title: 'Erreur',
-            text: backendMessage || 'Erreur interne du serveur',
-            footer: 'Code erreur : ' + error.status
-          });
+    if (!!this.CurrentItemId) {
+      Swal.fire({
+        title: 'Voulez-vous enregistrer les modifications?',
+        showCancelButton: true,
+        confirmButtonText: 'Enregistrer',
+        cancelButtonText: 'Annuler',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.updateOrder(this.CurrentItemId, formattedOrder);
+        } else if (result.isDenied) {
+          Swal.fire('Les modifications ne sont pas enregistrées', '', 'info');
         }
-      }
-    );
+      });
+    } else {
+      this.orderService.register(formattedOrder).subscribe(
+        data => {
+          this.order = new Order();
+          Swal.fire('', 'Commande ajoutée avec succès!', 'success');
+          this.router.navigate(['/order']);
+        },
+        error => {
+          console.error(error);
+          const backendMessage = error.error?.message || '';
+  
+          if (backendMessage.includes('SQLSTATE[23000]')) {
+            Swal.fire({
+              icon: 'error',
+              title: 'Conflit',
+              text: 'Veuillez vérifier les champs saisis. Conflit détecté.',
+            });
+          } else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Erreur',
+              text: backendMessage || 'Erreur interne du serveur',
+              footer: 'Code erreur : ' + error.status
+            });
+          }
+        }
+      );
+    }
   }
   
-  private updateOrder(id: any) {
-    // console.log(this.form.value);
-    // @ts-ignore
-    let obj = {id: id, CustomerID: this.form.value.CustomerID,EmployeeID:this.form.value.EmployeeID,
-      OrderDate:this.form.value.OrderDate, RequiredDate: this.form.value.RequiredDate,
-      ShippedDate:this.form.value.ShippedDate,ShipVia:this.form.value.ShipVia,
-      Freight:this.form.value.Freight,ShipName:this.form.value.ShipName,
-      ShipAddress: this.form.value.ShipAddress,ShipCity:this.form.value.ShipCity,
-      ShipPostalCode:this.form.value.ShipPostalCode,ShipCountry:this.form.value.ShipCountry}
-    this.orderService.updateOrder(obj,id)
+  private updateOrder(id: any, formattedOrder: any) {
+    this.orderService.updateOrder(formattedOrder, id)
       .subscribe(data => {
         this.order = new Order();
+        Swal.fire('', 'Commande modifiée avec succès!', 'success');
         this.router.navigate(['/order']);
       }, error => console.log(error));
   }
-}
+}  
